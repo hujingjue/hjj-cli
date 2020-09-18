@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports={
+    mode:'development',
     entry:{
         page:path.join(__dirname,'../app.js')
     },
@@ -19,17 +20,14 @@ module.exports={
                 use:[MiniCssExtractPlugin.loader,'css-loader','sass-loader']
             },
             {
-                test: /\.js$/,
+                test: /\.js|jsx$/,
+                loader:'babel-loader',
                 exclude: /node_modules/,
-                use:[
-                    {
-                        loader:'babel-loader',
-                        options: {
-                            plugins: ['lodash'],//只加载lodash用到的模块
-                            presets: [['env', { 'modules': false, 'targets': { 'node': 4 } }]]
-                        }
-                    }
-                ]
+                options: {
+                    plugins: ['lodash'],//只加载lodash用到的模块
+                    presets: ['@babel/preset-env']
+                }
+                  
                 
             }
         ]

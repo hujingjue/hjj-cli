@@ -1,5 +1,8 @@
-import foo from './src/index.js'
-import './app.scss'
-import './app.css'
-foo()
-console.log('hello hjj-cli') 
+import React from 'react'
+import ReactDom from 'react-dom'
+import Index from './src/page/Index/Index.jsx'
+
+ReactDom.render(
+    <Index></Index>,
+    document.getElementById('root')
+)
