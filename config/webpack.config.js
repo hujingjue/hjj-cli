@@ -3,9 +3,11 @@ const HtmlWebpackPlugin=require('html-webpack-plugin')
 const {CleanWebpackPlugin}=require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const uglify=require('uglifyjs-webpack-plugin');//js压缩
 
 module.exports={
     mode:'development',
+    devtool:'source-map',
     entry:{
         page:path.join(__dirname,'../app.js')
     },
@@ -52,6 +54,7 @@ module.exports={
         new MiniCssExtractPlugin({
             filename:'style.css'
         }),
-        new LodashModuleReplacementPlugin
+        new LodashModuleReplacementPlugin,
+        new uglify()
     ]
 }

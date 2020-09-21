@@ -11,7 +11,7 @@ class Index extends Component {
     }
 
     componentDidMount(){
-        console.log(this.state)
+        console.log(a)
         console.log(_.get(this.state,'obj'))
     }
 
